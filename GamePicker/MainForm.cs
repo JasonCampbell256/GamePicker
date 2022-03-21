@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace GamePicker
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private List<Game> games;
         private List<string> systems;
         private List<int> years;
         private List<string> regions;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             ToggleControls(false);
@@ -31,28 +31,7 @@ namespace GamePicker
             }
             try
             {
-                var json = File.ReadAllText("database.json");
-                var foo = JObject.Parse(json);
-
-                var defaultNode = foo["_default"];
-                var firstGameNode = defaultNode.First;
-                foreach (var node in defaultNode.Children())
-                {
-                    var game = Game.FromJToken(node);
-                    games.Add(game);
-                    if (!systems.Contains(game.Console, StringComparer.OrdinalIgnoreCase))
-                    {
-                        systems.Add(game.Console);
-                    }
-                    if (!regions.Contains(game.Region, StringComparer.OrdinalIgnoreCase))
-                    {
-                        regions.Add(game.Region);
-                    }
-                    if (!years.Contains(game.Year))
-                    {
-                        years.Add(game.Year);
-                    }
-                }
+                GetGamesFromJson();
                 PopulateFilterComboboxes();
                 ToggleControls(true);
             }
@@ -62,6 +41,31 @@ namespace GamePicker
                 throw;
             }
             
+        }
+
+        private void GetGamesFromJson()
+        {
+            var json = File.ReadAllText("database.json");
+            var defaultNode = JObject.Parse(json)["_default"];
+            var firstGameNode = defaultNode.First;
+
+            foreach (var node in defaultNode.Children())
+            {
+                var game = Game.FromJToken(node);
+                games.Add(game);
+                if (!systems.Contains(game.Console, StringComparer.OrdinalIgnoreCase))
+                {
+                    systems.Add(game.Console);
+                }
+                if (!regions.Contains(game.Region, StringComparer.OrdinalIgnoreCase))
+                {
+                    regions.Add(game.Region);
+                }
+                if (!years.Contains(game.Year))
+                {
+                    years.Add(game.Year);
+                }
+            }
         }
 
         private void ToggleControls(bool toggle)

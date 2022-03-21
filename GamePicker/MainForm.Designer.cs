@@ -1,7 +1,7 @@
 ﻿
 namespace GamePicker
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -112,9 +112,9 @@ namespace GamePicker
             // 
             this._buttonPick.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonPick.Location = new System.Drawing.Point(3, 344);
+            this._buttonPick.Location = new System.Drawing.Point(3, 127);
             this._buttonPick.Name = "_buttonPick";
-            this._buttonPick.Size = new System.Drawing.Size(314, 23);
+            this._buttonPick.Size = new System.Drawing.Size(314, 240);
             this._buttonPick.TabIndex = 6;
             this._buttonPick.Text = "Pick Random Game";
             this._buttonPick.UseVisualStyleBackColor = true;
@@ -283,7 +283,7 @@ namespace GamePicker
             this.ClientSize = new System.Drawing.Size(660, 379);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
-            this.Text = "Futureman\'s Game Randomizer";
+            this.Text = "Random Game Picker";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
