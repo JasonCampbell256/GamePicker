@@ -18,6 +18,7 @@ namespace GamePicker
         public MainForm()
         {
             InitializeComponent();
+            this.Text = $"Random Game Picker v{System.Windows.Forms.Application.ProductVersion}";
             ToggleControls(false);
             games = new List<Game>();
             systems = new List<string>();
