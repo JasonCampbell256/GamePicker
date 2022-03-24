@@ -25,14 +25,20 @@ namespace GamePicker
             years = new List<int>();
             regions = new List<string>();
 
-            if (!File.Exists("database.json"))
+            //if (!File.Exists("database.json"))
+            //{
+            //    MessageBox.Show("Could not find database.json, closing application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Environment.Exit(0);
+            //}
+            if (!File.Exists("GAMES.txt"))
             {
-                MessageBox.Show("Could not find database.json, closing application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Could not find GAMES.txt, closing application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
             try
             {
-                GetGamesFromJson();
+                //GetGamesFromJson();
+                GetGamesFromTxt();
                 PopulateFilterComboboxes();
                 ToggleControls(true);
             }
@@ -42,6 +48,31 @@ namespace GamePicker
                 throw;
             }
             
+        }
+
+        private void GetGamesFromTxt()
+        {
+            var txt = File.ReadLines("GAMES.txt");
+            var currentSystem = "";
+            foreach(var line in txt)
+            {
+                if (line.Length == 0)
+                {
+                    continue;
+                }
+                if (String.Equals(line[0].ToString(), "*", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    var system = line.Remove(0, 1);
+                    systems.Add(system);
+                    currentSystem = system;
+                } else
+                {
+                    var game = new Game();
+                    game.Title = line;
+                    game.Console = currentSystem;
+                    games.Add(game);
+                }
+            }
         }
 
         private void GetGamesFromJson()
