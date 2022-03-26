@@ -57,9 +57,10 @@ namespace GamePicker
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 11);
+            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.Size = new System.Drawing.Size(76, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Game";
             // 
@@ -67,26 +68,29 @@ namespace GamePicker
             // 
             this._textBoxGame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxGame.Location = new System.Drawing.Point(79, 11);
+            this._textBoxGame.Location = new System.Drawing.Point(147, 23);
+            this._textBoxGame.Margin = new System.Windows.Forms.Padding(6);
             this._textBoxGame.Name = "_textBoxGame";
-            this._textBoxGame.Size = new System.Drawing.Size(245, 23);
+            this._textBoxGame.Size = new System.Drawing.Size(450, 39);
             this._textBoxGame.TabIndex = 1;
             // 
             // _textBoxConsole
             // 
             this._textBoxConsole.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxConsole.Location = new System.Drawing.Point(79, 40);
+            this._textBoxConsole.Location = new System.Drawing.Point(147, 85);
+            this._textBoxConsole.Margin = new System.Windows.Forms.Padding(6);
             this._textBoxConsole.Name = "_textBoxConsole";
-            this._textBoxConsole.Size = new System.Drawing.Size(245, 23);
+            this._textBoxConsole.Size = new System.Drawing.Size(450, 39);
             this._textBoxConsole.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 40);
+            this.label2.Location = new System.Drawing.Point(6, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 15);
+            this.label2.Size = new System.Drawing.Size(100, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "Console";
             // 
@@ -94,27 +98,32 @@ namespace GamePicker
             // 
             this._textBoxYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxYear.Location = new System.Drawing.Point(79, 98);
+            this._textBoxYear.Location = new System.Drawing.Point(147, 209);
+            this._textBoxYear.Margin = new System.Windows.Forms.Padding(6);
             this._textBoxYear.Name = "_textBoxYear";
-            this._textBoxYear.Size = new System.Drawing.Size(245, 23);
+            this._textBoxYear.Size = new System.Drawing.Size(450, 39);
             this._textBoxYear.TabIndex = 5;
+            this._textBoxYear.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 98);
+            this.label3.Location = new System.Drawing.Point(6, 209);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 15);
+            this.label3.Size = new System.Drawing.Size(58, 32);
             this.label3.TabIndex = 4;
             this.label3.Text = "Year";
+            this.label3.Visible = false;
             // 
             // _buttonPick
             // 
             this._buttonPick.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonPick.Location = new System.Drawing.Point(3, 127);
+            this._buttonPick.Location = new System.Drawing.Point(6, 273);
+            this._buttonPick.Margin = new System.Windows.Forms.Padding(6);
             this._buttonPick.Name = "_buttonPick";
-            this._buttonPick.Size = new System.Drawing.Size(314, 240);
+            this._buttonPick.Size = new System.Drawing.Size(583, 82);
             this._buttonPick.TabIndex = 6;
             this._buttonPick.Text = "Pick Random Game";
             this._buttonPick.UseVisualStyleBackColor = true;
@@ -122,9 +131,9 @@ namespace GamePicker
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -151,8 +160,9 @@ namespace GamePicker
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this._textBoxConsole);
             this.splitContainer1.Panel2.Enabled = false;
-            this.splitContainer1.Size = new System.Drawing.Size(660, 379);
-            this.splitContainer1.SplitterDistance = 320;
+            this.splitContainer1.Size = new System.Drawing.Size(1226, 381);
+            this.splitContainer1.SplitterDistance = 594;
+            this.splitContainer1.SplitterWidth = 7;
             this.splitContainer1.TabIndex = 7;
             // 
             // _comboBoxRegion
@@ -165,26 +175,31 @@ namespace GamePicker
             "",
             "Nintendo 64",
             "Sony Playstation"});
-            this._comboBoxRegion.Location = new System.Drawing.Point(69, 69);
+            this._comboBoxRegion.Location = new System.Drawing.Point(128, 147);
+            this._comboBoxRegion.Margin = new System.Windows.Forms.Padding(6);
             this._comboBoxRegion.Name = "_comboBoxRegion";
-            this._comboBoxRegion.Size = new System.Drawing.Size(248, 23);
+            this._comboBoxRegion.Size = new System.Drawing.Size(457, 40);
             this._comboBoxRegion.TabIndex = 8;
+            this._comboBoxRegion.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 72);
+            this.label7.Location = new System.Drawing.Point(24, 154);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 15);
+            this.label7.Size = new System.Drawing.Size(88, 32);
             this.label7.TabIndex = 7;
             this.label7.Text = "Region";
+            this.label7.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 10);
+            this.label6.Location = new System.Drawing.Point(24, 21);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 15);
+            this.label6.Size = new System.Drawing.Size(77, 32);
             this.label6.TabIndex = 4;
             this.label6.Text = "Filters";
             // 
@@ -199,19 +214,23 @@ namespace GamePicker
             "",
             "2000",
             "1996"});
-            this._comboBoxYearFilter.Location = new System.Drawing.Point(69, 98);
+            this._comboBoxYearFilter.Location = new System.Drawing.Point(128, 209);
+            this._comboBoxYearFilter.Margin = new System.Windows.Forms.Padding(6);
             this._comboBoxYearFilter.Name = "_comboBoxYearFilter";
-            this._comboBoxYearFilter.Size = new System.Drawing.Size(248, 23);
+            this._comboBoxYearFilter.Size = new System.Drawing.Size(457, 40);
             this._comboBoxYearFilter.TabIndex = 3;
+            this._comboBoxYearFilter.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 101);
+            this.label5.Location = new System.Drawing.Point(24, 215);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 15);
+            this.label5.Size = new System.Drawing.Size(58, 32);
             this.label5.TabIndex = 2;
             this.label5.Text = "Year";
+            this.label5.Visible = false;
             // 
             // _comboBoxConsoleFilter
             // 
@@ -223,17 +242,19 @@ namespace GamePicker
             "",
             "Nintendo 64",
             "Sony Playstation"});
-            this._comboBoxConsoleFilter.Location = new System.Drawing.Point(69, 40);
+            this._comboBoxConsoleFilter.Location = new System.Drawing.Point(128, 85);
+            this._comboBoxConsoleFilter.Margin = new System.Windows.Forms.Padding(6);
             this._comboBoxConsoleFilter.Name = "_comboBoxConsoleFilter";
-            this._comboBoxConsoleFilter.Size = new System.Drawing.Size(248, 23);
+            this._comboBoxConsoleFilter.Size = new System.Drawing.Size(457, 40);
             this._comboBoxConsoleFilter.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 43);
+            this.label4.Location = new System.Drawing.Point(24, 92);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 15);
+            this.label4.Size = new System.Drawing.Size(100, 32);
             this.label4.TabIndex = 0;
             this.label4.Text = "Console";
             // 
@@ -242,47 +263,56 @@ namespace GamePicker
             this._textBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxDescription.Location = new System.Drawing.Point(79, 127);
+            this._textBoxDescription.Location = new System.Drawing.Point(147, 271);
+            this._textBoxDescription.Margin = new System.Windows.Forms.Padding(6);
             this._textBoxDescription.Multiline = true;
             this._textBoxDescription.Name = "_textBoxDescription";
             this._textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this._textBoxDescription.Size = new System.Drawing.Size(245, 240);
+            this._textBoxDescription.Size = new System.Drawing.Size(450, 79);
             this._textBoxDescription.TabIndex = 9;
+            this._textBoxDescription.Visible = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 127);
+            this.label9.Location = new System.Drawing.Point(6, 271);
+            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 15);
+            this.label9.Size = new System.Drawing.Size(135, 32);
             this.label9.TabIndex = 8;
             this.label9.Text = "Description";
+            this.label9.Visible = false;
             // 
             // _textBoxRegion
             // 
             this._textBoxRegion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxRegion.Location = new System.Drawing.Point(79, 69);
+            this._textBoxRegion.Location = new System.Drawing.Point(147, 147);
+            this._textBoxRegion.Margin = new System.Windows.Forms.Padding(6);
             this._textBoxRegion.Name = "_textBoxRegion";
-            this._textBoxRegion.Size = new System.Drawing.Size(245, 23);
+            this._textBoxRegion.Size = new System.Drawing.Size(450, 39);
             this._textBoxRegion.TabIndex = 7;
+            this._textBoxRegion.Visible = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 69);
+            this.label8.Location = new System.Drawing.Point(6, 147);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 15);
+            this.label8.Size = new System.Drawing.Size(88, 32);
             this.label8.TabIndex = 6;
             this.label8.Text = "Region";
+            this.label8.Visible = false;
             // 
-            // Form1
+            // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 379);
+            this.ClientSize = new System.Drawing.Size(1226, 381);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Name = "MainForm";
             this.Text = "Random Game Picker";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
