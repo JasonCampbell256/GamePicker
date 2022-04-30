@@ -1,17 +1,31 @@
 # GamePicker
- Pick a random game based on filter criteria
+ Pick a random game based on console selection. Games and consoles are easily managed in a text file.
 
 ## Setup
- 1. Download [database.json](https://github.com/christopher-roelofs/GameEventHub/raw/main/database.json) from [GameEventHub by Christopher Roelofs](https://github.com/christopher-roelofs/GameEventHub)
- 2. Place `database.json` in the same folder as `GamePicker.exe`.
-For development, this path is in the `bin` folder ex: `GamePicker\bin\Debug\net5.0-windows`
+ 1. Create a file called GAMES.txt and place it in the root folder.
+ 2. Populate text file with consoles and games. Each line must contain one console or game. Consoles must begin with a *.
+
+ Example text file:
+ ```
+ *Playstation
+ Gran Turismo
+ Crash Bandicoot
+
+ *Super Nintendo
+ Star Fox
+ Super Mario World
+
+ *Xbox 360
+Call of Duty 2
+Halo 3
+Halo Reach
+ ```
 
 ## Usage
  1. Run `GamePicker.exe`
- 2. (Optional) Choose filter criteria on the left side of the screen.
- 3. Cick the Pick button to populate fields on the right with a randomly chosen game.
+ 2. (Optional) Pick your consoles.
+ 3. Cick the "Pick Randon Game" button to populate fields on the right with a randomly chosen game.
 
 ## Dependencies
  - .NET 5
  - WinForms
- - Json.NET

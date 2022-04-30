@@ -30,24 +30,13 @@ namespace GamePicker
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this._textBoxGame = new System.Windows.Forms.TextBox();
             this._textBoxConsole = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this._textBoxYear = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this._buttonPick = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this._comboBoxRegion = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this._comboBoxYearFilter = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this._comboBoxConsoleFilter = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this._textBoxDescription = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this._textBoxRegion = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this._buttonClearSelection = new System.Windows.Forms.Button();
+            this._listBoxConsoleFilter = new System.Windows.Forms.ListBox();
+            this._textBoxGame = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,73 +46,38 @@ namespace GamePicker
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(3, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 32);
+            this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Game";
-            // 
-            // _textBoxGame
-            // 
-            this._textBoxGame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxGame.Location = new System.Drawing.Point(147, 23);
-            this._textBoxGame.Margin = new System.Windows.Forms.Padding(6);
-            this._textBoxGame.Name = "_textBoxGame";
-            this._textBoxGame.Size = new System.Drawing.Size(450, 39);
-            this._textBoxGame.TabIndex = 1;
             // 
             // _textBoxConsole
             // 
             this._textBoxConsole.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxConsole.Location = new System.Drawing.Point(147, 85);
-            this._textBoxConsole.Margin = new System.Windows.Forms.Padding(6);
+            this._textBoxConsole.Location = new System.Drawing.Point(79, 78);
             this._textBoxConsole.Name = "_textBoxConsole";
-            this._textBoxConsole.Size = new System.Drawing.Size(450, 39);
+            this._textBoxConsole.ReadOnly = true;
+            this._textBoxConsole.Size = new System.Drawing.Size(252, 23);
             this._textBoxConsole.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 85);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(3, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 32);
+            this.label2.Size = new System.Drawing.Size(50, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Console";
-            // 
-            // _textBoxYear
-            // 
-            this._textBoxYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxYear.Location = new System.Drawing.Point(147, 209);
-            this._textBoxYear.Margin = new System.Windows.Forms.Padding(6);
-            this._textBoxYear.Name = "_textBoxYear";
-            this._textBoxYear.Size = new System.Drawing.Size(450, 39);
-            this._textBoxYear.TabIndex = 5;
-            this._textBoxYear.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 209);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 32);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Year";
-            this.label3.Visible = false;
             // 
             // _buttonPick
             // 
             this._buttonPick.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonPick.Location = new System.Drawing.Point(6, 273);
-            this._buttonPick.Margin = new System.Windows.Forms.Padding(6);
+            this._buttonPick.Location = new System.Drawing.Point(12, 392);
             this._buttonPick.Name = "_buttonPick";
-            this._buttonPick.Size = new System.Drawing.Size(583, 82);
+            this._buttonPick.Size = new System.Drawing.Size(299, 38);
             this._buttonPick.TabIndex = 6;
             this._buttonPick.Text = "Pick Random Game";
             this._buttonPick.UseVisualStyleBackColor = true;
@@ -133,189 +87,69 @@ namespace GamePicker
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this._comboBoxRegion);
-            this.splitContainer1.Panel1.Controls.Add(this.label7);
-            this.splitContainer1.Panel1.Controls.Add(this.label6);
+            this.splitContainer1.Panel1.Controls.Add(this._buttonClearSelection);
             this.splitContainer1.Panel1.Controls.Add(this._buttonPick);
-            this.splitContainer1.Panel1.Controls.Add(this._comboBoxYearFilter);
-            this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this._comboBoxConsoleFilter);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
+            this.splitContainer1.Panel1.Controls.Add(this._listBoxConsoleFilter);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this._textBoxDescription);
-            this.splitContainer1.Panel2.Controls.Add(this.label9);
-            this.splitContainer1.Panel2.Controls.Add(this._textBoxRegion);
-            this.splitContainer1.Panel2.Controls.Add(this.label8);
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this._textBoxGame);
-            this.splitContainer1.Panel2.Controls.Add(this._textBoxYear);
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this._textBoxConsole);
-            this.splitContainer1.Panel2.Enabled = false;
-            this.splitContainer1.Size = new System.Drawing.Size(1226, 381);
-            this.splitContainer1.SplitterDistance = 594;
-            this.splitContainer1.SplitterWidth = 7;
+            this.splitContainer1.Size = new System.Drawing.Size(676, 442);
+            this.splitContainer1.SplitterDistance = 326;
             this.splitContainer1.TabIndex = 7;
             // 
-            // _comboBoxRegion
+            // _buttonClearSelection
             // 
-            this._comboBoxRegion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._buttonClearSelection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._comboBoxRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._comboBoxRegion.FormattingEnabled = true;
-            this._comboBoxRegion.Items.AddRange(new object[] {
-            "",
-            "Nintendo 64",
-            "Sony Playstation"});
-            this._comboBoxRegion.Location = new System.Drawing.Point(128, 147);
-            this._comboBoxRegion.Margin = new System.Windows.Forms.Padding(6);
-            this._comboBoxRegion.Name = "_comboBoxRegion";
-            this._comboBoxRegion.Size = new System.Drawing.Size(457, 40);
-            this._comboBoxRegion.TabIndex = 8;
-            this._comboBoxRegion.Visible = false;
+            this._buttonClearSelection.Location = new System.Drawing.Point(12, 348);
+            this._buttonClearSelection.Name = "_buttonClearSelection";
+            this._buttonClearSelection.Size = new System.Drawing.Size(299, 38);
+            this._buttonClearSelection.TabIndex = 8;
+            this._buttonClearSelection.Text = "Clear Console Selections";
+            this._buttonClearSelection.UseVisualStyleBackColor = true;
+            this._buttonClearSelection.Click += new System.EventHandler(this.onButtonClick);
             // 
-            // label7
+            // _listBoxConsoleFilter
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 154);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 32);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Region";
-            this.label7.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 21);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 32);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Filters";
-            // 
-            // _comboBoxYearFilter
-            // 
-            this._comboBoxYearFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._comboBoxYearFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._comboBoxYearFilter.Enabled = false;
-            this._comboBoxYearFilter.FormattingEnabled = true;
-            this._comboBoxYearFilter.Items.AddRange(new object[] {
-            "",
-            "2000",
-            "1996"});
-            this._comboBoxYearFilter.Location = new System.Drawing.Point(128, 209);
-            this._comboBoxYearFilter.Margin = new System.Windows.Forms.Padding(6);
-            this._comboBoxYearFilter.Name = "_comboBoxYearFilter";
-            this._comboBoxYearFilter.Size = new System.Drawing.Size(457, 40);
-            this._comboBoxYearFilter.TabIndex = 3;
-            this._comboBoxYearFilter.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 215);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 32);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Year";
-            this.label5.Visible = false;
-            // 
-            // _comboBoxConsoleFilter
-            // 
-            this._comboBoxConsoleFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._comboBoxConsoleFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._comboBoxConsoleFilter.FormattingEnabled = true;
-            this._comboBoxConsoleFilter.Items.AddRange(new object[] {
-            "",
-            "Nintendo 64",
-            "Sony Playstation"});
-            this._comboBoxConsoleFilter.Location = new System.Drawing.Point(128, 85);
-            this._comboBoxConsoleFilter.Margin = new System.Windows.Forms.Padding(6);
-            this._comboBoxConsoleFilter.Name = "_comboBoxConsoleFilter";
-            this._comboBoxConsoleFilter.Size = new System.Drawing.Size(457, 40);
-            this._comboBoxConsoleFilter.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 92);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 32);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Console";
-            // 
-            // _textBoxDescription
-            // 
-            this._textBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._listBoxConsoleFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxDescription.Location = new System.Drawing.Point(147, 271);
-            this._textBoxDescription.Margin = new System.Windows.Forms.Padding(6);
-            this._textBoxDescription.Multiline = true;
-            this._textBoxDescription.Name = "_textBoxDescription";
-            this._textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this._textBoxDescription.Size = new System.Drawing.Size(450, 79);
-            this._textBoxDescription.TabIndex = 9;
-            this._textBoxDescription.Visible = false;
+            this._listBoxConsoleFilter.FormattingEnabled = true;
+            this._listBoxConsoleFilter.ItemHeight = 15;
+            this._listBoxConsoleFilter.Location = new System.Drawing.Point(12, 12);
+            this._listBoxConsoleFilter.Name = "_listBoxConsoleFilter";
+            this._listBoxConsoleFilter.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this._listBoxConsoleFilter.Size = new System.Drawing.Size(299, 319);
+            this._listBoxConsoleFilter.TabIndex = 7;
             // 
-            // label9
+            // _textBoxGame
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 271);
-            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(135, 32);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Description";
-            this.label9.Visible = false;
-            // 
-            // _textBoxRegion
-            // 
-            this._textBoxRegion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._textBoxGame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxRegion.Location = new System.Drawing.Point(147, 147);
-            this._textBoxRegion.Margin = new System.Windows.Forms.Padding(6);
-            this._textBoxRegion.Name = "_textBoxRegion";
-            this._textBoxRegion.Size = new System.Drawing.Size(450, 39);
-            this._textBoxRegion.TabIndex = 7;
-            this._textBoxRegion.Visible = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 147);
-            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 32);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Region";
-            this.label8.Visible = false;
+            this._textBoxGame.Location = new System.Drawing.Point(79, 13);
+            this._textBoxGame.Multiline = true;
+            this._textBoxGame.Name = "_textBoxGame";
+            this._textBoxGame.ReadOnly = true;
+            this._textBoxGame.Size = new System.Drawing.Size(252, 50);
+            this._textBoxGame.TabIndex = 4;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 381);
+            this.ClientSize = new System.Drawing.Size(676, 442);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
             this.Text = "Random Game Picker";
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -327,24 +161,13 @@ namespace GamePicker
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox _textBoxGame;
         private System.Windows.Forms.TextBox _textBoxConsole;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox _textBoxYear;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button _buttonPick;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ComboBox _comboBoxYearFilter;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox _comboBoxConsoleFilter;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox _comboBoxRegion;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox _textBoxDescription;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox _textBoxRegion;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox _listBoxConsoleFilter;
+        private System.Windows.Forms.TextBox _textBoxGame;
+        private System.Windows.Forms.Button _buttonClearSelection;
     }
 }
 

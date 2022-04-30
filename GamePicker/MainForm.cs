@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -12,8 +11,6 @@ namespace GamePicker
     {
         private List<Game> games;
         private List<string> systems;
-        private List<int> years;
-        private List<string> regions;
 
         public MainForm()
         {
@@ -22,14 +19,9 @@ namespace GamePicker
             ToggleControls(false);
             games = new List<Game>();
             systems = new List<string>();
-            years = new List<int>();
-            regions = new List<string>();
+            _textBoxGame.Enabled = true;
+            _listBoxConsoleFilter.Items.Clear();
 
-            //if (!File.Exists("database.json"))
-            //{
-            //    MessageBox.Show("Could not find database.json, closing application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Environment.Exit(0);
-            //}
             if (!File.Exists("GAMES.txt"))
             {
                 MessageBox.Show("Could not find GAMES.txt, closing application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -37,9 +29,8 @@ namespace GamePicker
             }
             try
             {
-                //GetGamesFromJson();
                 GetGamesFromTxt();
-                PopulateFilterComboboxes();
+                PopulateFilterListBox();
                 ToggleControls(true);
             }
             catch (Exception e)
@@ -75,36 +66,9 @@ namespace GamePicker
             }
         }
 
-        private void GetGamesFromJson()
-        {
-            var json = File.ReadAllText("database.json");
-            var defaultNode = JObject.Parse(json)["_default"];
-            var firstGameNode = defaultNode.First;
-
-            foreach (var node in defaultNode.Children())
-            {
-                var game = Game.FromJToken(node);
-                games.Add(game);
-                if (!systems.Contains(game.Console, StringComparer.OrdinalIgnoreCase))
-                {
-                    systems.Add(game.Console);
-                }
-                if (!regions.Contains(game.Region, StringComparer.OrdinalIgnoreCase))
-                {
-                    regions.Add(game.Region);
-                }
-                if (!years.Contains(game.Year))
-                {
-                    years.Add(game.Year);
-                }
-            }
-        }
-
         private void ToggleControls(bool toggle)
         {
-            _comboBoxConsoleFilter.Enabled = toggle;
-            _comboBoxRegion.Enabled = toggle;
-            //_comboBoxYearFilter.Enabled = toggle;
+            _listBoxConsoleFilter.Enabled = toggle;
             _buttonPick.Enabled = toggle;
         }
 
@@ -112,68 +76,35 @@ namespace GamePicker
         {
             _textBoxConsole.Clear();
             _textBoxGame.Clear();
-            _textBoxYear.Clear();
-            _textBoxDescription.Clear();
-            _textBoxRegion.Clear();
         }
 
-        private void PopulateFilterComboboxes()
+        private void PopulateFilterListBox()
         {
-            _comboBoxConsoleFilter.Items.Clear();
-            _comboBoxConsoleFilter.Items.Add("");
+            _listBoxConsoleFilter.Items.Clear();
             systems.Sort();
-            _comboBoxConsoleFilter.Items.AddRange(systems.ToArray());
-
-            _comboBoxRegion.Items.Clear();
-            _comboBoxRegion.Items.Add("");
-            regions.Sort();
-            _comboBoxRegion.Items.AddRange(regions.ToArray());
-
-            _comboBoxYearFilter.Items.Clear();
-            _comboBoxYearFilter.Items.Add("");
-            years.Sort();
-            foreach (var year in years)
-            {
-                _comboBoxYearFilter.Items.Add(year);
-            }
+            _listBoxConsoleFilter.Items.AddRange(systems.ToArray());
         }
 
         private void PopulateTextBoxes(Game game)
         {
             _textBoxGame.Text = game.Title;
             _textBoxConsole.Text = game.Console;
-            _textBoxYear.Text = game.Year.ToString();
-            _textBoxDescription.Text = game.Description;
-            _textBoxRegion.Text = game.Region;
         }
 
         private void PickRandomGame()
         {
             var random = new Random();
             List<Game> filteredGames = games;
-            String consoleFilter;
-            int yearFilter;
-            String regionFilter;
 
-            if (!String.IsNullOrWhiteSpace(_comboBoxConsoleFilter.Text))
+            if (_listBoxConsoleFilter.SelectedItems.Count > 0)
             {
-                consoleFilter = _comboBoxConsoleFilter.Text;
+                var selectedConsoles = new List<string>();
+                foreach (var item in _listBoxConsoleFilter.SelectedItems)
+                {
+                    selectedConsoles.Add(item.ToString());
+                }
 
-                filteredGames = filteredGames.Where(x => String.Equals(x.Console, consoleFilter)).ToList();
-            }
-
-            if (!String.IsNullOrWhiteSpace(_comboBoxYearFilter.Text))
-            {
-                Int32.TryParse(_comboBoxYearFilter.Text, out yearFilter);
-
-                filteredGames = filteredGames.Where(x => x.Year == yearFilter).ToList();
-            }
-
-            if (!String.IsNullOrWhiteSpace(_comboBoxRegion.Text))
-            {
-                regionFilter = _comboBoxRegion.Text;
-
-                filteredGames = filteredGames.Where(x => String.Equals(x.Region, regionFilter)).ToList();
+                filteredGames = filteredGames.Where(x => selectedConsoles.Contains(x.Console)).ToList();
             }
 
             if (filteredGames.Count != 0)
@@ -187,8 +118,6 @@ namespace GamePicker
             {
                 MessageBox.Show("No game found with specified parameters");
             }
-
-            
         }
 
         private void onButtonClick(object sender, EventArgs e)
@@ -196,6 +125,9 @@ namespace GamePicker
             if (sender.Equals(_buttonPick))
             {
                 PickRandomGame();
+            } else if (sender.Equals(_buttonClearSelection))
+            {
+                _listBoxConsoleFilter.ClearSelected();
             }
         }
     }
