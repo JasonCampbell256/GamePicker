@@ -6,7 +6,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <SignAssembly>false</SignAssembly>
     <StartupObject></StartupObject>
-    <Version>0.3.1</Version>
+    <Version>0.4.0</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="27.2.1" />
+  </ItemGroup>
 
 </Project>

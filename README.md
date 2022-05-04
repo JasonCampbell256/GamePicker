@@ -1,24 +1,15 @@
 # GamePicker
  Pick a random game based on console selection. Games and consoles are easily managed in a text file.
 
-## Setup
- 1. Create a file called GAMES.txt and place it in the root folder.
- 2. Populate text file with consoles and games. Each line must contain one console or game. Consoles must begin with a *.
+## Requirements
+ 1. A CSV file called GAMES.csv in the root application directory.
 
- Example text file:
+ Example CSV file:
  ```
- *Playstation
- Gran Turismo
- Crash Bandicoot
-
- *Super Nintendo
- Star Fox
- Super Mario World
-
- *Xbox 360
-Call of Duty 2
-Halo 3
-Halo Reach
+ Console,Region,Game,
+ PS1,USA,3D Lemmings
+ PS1,USA,3Xtreme
+ PS1,USA,007 - The World Is Not Enough
  ```
 
 ## Usage
@@ -29,3 +20,4 @@ Halo Reach
 ## Dependencies
  - .NET 5
  - WinForms
+ - CsvHelper

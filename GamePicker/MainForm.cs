@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,14 +24,14 @@ namespace GamePicker
             _textBoxGame.Enabled = true;
             _listBoxConsoleFilter.Items.Clear();
 
-            if (!File.Exists("GAMES.txt"))
+            if (!File.Exists("GAMES.csv"))
             {
-                MessageBox.Show("Could not find GAMES.txt, closing application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Could not find GAMES.csv, closing application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
             try
             {
-                GetGamesFromTxt();
+                GetGamesFromCsv();
                 PopulateFilterListBox();
                 ToggleControls(true);
             }
@@ -41,29 +43,29 @@ namespace GamePicker
             
         }
 
-        private void GetGamesFromTxt()
+        private void GetGamesFromCsv()
         {
-            var txt = File.ReadLines("GAMES.txt");
-            var currentSystem = "";
-            foreach(var line in txt)
+            using (var reader = new StreamReader("GAMES.csv"))
             {
-                if (line.Length == 0)
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    continue;
-                }
-                if (String.Equals(line[0].ToString(), "*", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    var system = line.Remove(0, 1);
-                    systems.Add(system);
-                    currentSystem = system;
-                } else
-                {
-                    var game = new Game();
-                    game.Title = line;
-                    game.Console = currentSystem;
-                    games.Add(game);
+                    var records = csv.GetRecords<CsvGame>();
+                    foreach (var record in records)
+                    {
+                        var game = new Game {
+                            Title = record.Game,
+                            Console = record.Console,
+                            ConsoleRegionIdentifier = $"{record.Console} - {record.Region}"
+                        };
+                        games.Add(game);
+                        if (!systems.Contains(game.ConsoleRegionIdentifier))
+                        {
+                            systems.Add(game.ConsoleRegionIdentifier);
+                        }
+                    }
                 }
             }
+
         }
 
         private void ToggleControls(bool toggle)
@@ -88,7 +90,7 @@ namespace GamePicker
         private void PopulateTextBoxes(Game game)
         {
             _textBoxGame.Text = game.Title;
-            _textBoxConsole.Text = game.Console;
+            _textBoxConsole.Text = game.ConsoleRegionIdentifier;
         }
 
         private void PickRandomGame()
@@ -104,7 +106,7 @@ namespace GamePicker
                     selectedConsoles.Add(item.ToString());
                 }
 
-                filteredGames = filteredGames.Where(x => selectedConsoles.Contains(x.Console)).ToList();
+                filteredGames = filteredGames.Where(x => selectedConsoles.Contains(x.ConsoleRegionIdentifier)).ToList();
             }
 
             if (filteredGames.Count != 0)
