@@ -105,8 +105,13 @@ namespace GamePicker
                 {
                     selectedConsoles.Add(item.ToString());
                 }
-
+                var searchterms = _textBoxConsole.Text.Trim();
                 filteredGames = filteredGames.Where(x => selectedConsoles.Contains(x.ConsoleRegionIdentifier)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(_textBoxSearchTerms.Text))
+            {
+                filteredGames = filteredGames.Where(x => x.Title.Contains(_textBoxSearchTerms.Text.Trim(), StringComparison.InvariantCultureIgnoreCase)).ToList();
             }
 
             if (filteredGames.Count != 0)

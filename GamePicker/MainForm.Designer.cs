@@ -34,6 +34,7 @@ namespace GamePicker
             this.label2 = new System.Windows.Forms.Label();
             this._buttonPick = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this._textBoxSearchTerms = new System.Windows.Forms.TextBox();
             this._buttonClearSelection = new System.Windows.Forms.Button();
             this._listBoxConsoleFilter = new System.Windows.Forms.ListBox();
             this._textBoxGame = new System.Windows.Forms.TextBox();
@@ -91,6 +92,7 @@ namespace GamePicker
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this._textBoxSearchTerms);
             this.splitContainer1.Panel1.Controls.Add(this._buttonClearSelection);
             this.splitContainer1.Panel1.Controls.Add(this._buttonPick);
             this.splitContainer1.Panel1.Controls.Add(this._listBoxConsoleFilter);
@@ -104,6 +106,16 @@ namespace GamePicker
             this.splitContainer1.Size = new System.Drawing.Size(676, 442);
             this.splitContainer1.SplitterDistance = 326;
             this.splitContainer1.TabIndex = 7;
+            // 
+            // _textBoxSearchTerms
+            // 
+            this._textBoxSearchTerms.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxSearchTerms.Location = new System.Drawing.Point(13, 319);
+            this._textBoxSearchTerms.Name = "_textBoxSearchTerms";
+            this._textBoxSearchTerms.PlaceholderText = "Enter search phrase (optional)";
+            this._textBoxSearchTerms.Size = new System.Drawing.Size(298, 23);
+            this._textBoxSearchTerms.TabIndex = 9;
             // 
             // _buttonClearSelection
             // 
@@ -127,7 +139,7 @@ namespace GamePicker
             this._listBoxConsoleFilter.Location = new System.Drawing.Point(12, 12);
             this._listBoxConsoleFilter.Name = "_listBoxConsoleFilter";
             this._listBoxConsoleFilter.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this._listBoxConsoleFilter.Size = new System.Drawing.Size(299, 319);
+            this._listBoxConsoleFilter.Size = new System.Drawing.Size(299, 304);
             this._listBoxConsoleFilter.TabIndex = 7;
             // 
             // _textBoxGame
@@ -150,6 +162,7 @@ namespace GamePicker
             this.Name = "MainForm";
             this.Text = "Random Game Picker";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -168,6 +181,7 @@ namespace GamePicker
         private System.Windows.Forms.ListBox _listBoxConsoleFilter;
         private System.Windows.Forms.TextBox _textBoxGame;
         private System.Windows.Forms.Button _buttonClearSelection;
+        private System.Windows.Forms.TextBox _textBoxSearchTerms;
     }
 }
 
