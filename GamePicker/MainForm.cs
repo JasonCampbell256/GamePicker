@@ -13,7 +13,6 @@ namespace GamePicker
     {
         private List<Game> games;
         private List<string> systems;
-
         public MainForm()
         {
             InitializeComponent();
@@ -23,6 +22,7 @@ namespace GamePicker
             systems = new List<string>();
             _textBoxGame.Enabled = true;
             _listBoxConsoleFilter.Items.Clear();
+            _checkBoxRegionUSA.Checked = true;
 
             if (!File.Exists("GAMES.csv"))
             {
@@ -40,7 +40,7 @@ namespace GamePicker
                 MessageBox.Show("The following error occurred: " + e.Message);
                 throw;
             }
-            
+
         }
 
         private void GetGamesFromCsv()
@@ -57,10 +57,23 @@ namespace GamePicker
                             Console = record.Console,
                             ConsoleRegionIdentifier = $"{record.Console} - {record.Region}"
                         };
-                        games.Add(game);
-                        if (!systems.Contains(game.ConsoleRegionIdentifier))
+                        if (String.Equals(record.Region.Trim(), "usa", StringComparison.InvariantCultureIgnoreCase)
+                            || String.Equals(record.Region.Trim(), "us", StringComparison.InvariantCultureIgnoreCase))
                         {
-                            systems.Add(game.ConsoleRegionIdentifier);
+                            game.Region = GamePicker.Region.USA;
+                        } else if (String.Equals(record.Region.Trim(), "europe", StringComparison.InvariantCultureIgnoreCase)
+                            || String.Equals(record.Region.Trim(), "eu", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            game.Region = GamePicker.Region.EUROPE;
+                        } else if (String.Equals(record.Region.Trim(), "japan", StringComparison.InvariantCultureIgnoreCase)
+                            || String.Equals(record.Region.Trim(), "jp", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            game.Region = GamePicker.Region.JAPAN;
+                        }
+                        games.Add(game);
+                        if (!systems.Contains(game.Console))
+                        {
+                            systems.Add(game.Console);
                         }
                     }
                 }
@@ -78,6 +91,7 @@ namespace GamePicker
         {
             _textBoxConsole.Clear();
             _textBoxGame.Clear();
+            _textBoxRegion.Clear();
         }
 
         private void PopulateFilterListBox()
@@ -90,7 +104,8 @@ namespace GamePicker
         private void PopulateTextBoxes(Game game)
         {
             _textBoxGame.Text = game.Title;
-            _textBoxConsole.Text = game.ConsoleRegionIdentifier;
+            _textBoxConsole.Text = game.Console;
+            _textBoxRegion.Text = game.Region.ToString();
         }
 
         private void PickRandomGame()
@@ -98,21 +113,43 @@ namespace GamePicker
             var random = new Random();
             List<Game> filteredGames = games;
 
-            if (_listBoxConsoleFilter.SelectedItems.Count > 0)
+            if (!_checkBoxRegionUSA.Checked && !_checkBoxRegionEurope.Checked && !_checkBoxRegionJapan.Checked)
             {
-                var selectedConsoles = new List<string>();
-                foreach (var item in _listBoxConsoleFilter.SelectedItems)
-                {
-                    selectedConsoles.Add(item.ToString());
-                }
-                var searchterms = _textBoxConsole.Text.Trim();
-                filteredGames = filteredGames.Where(x => selectedConsoles.Contains(x.ConsoleRegionIdentifier)).ToList();
+                MessageBox.Show("You need to check a region", "Idiot.", MessageBoxButtons.OK);
+                return;
             }
 
-            if (!String.IsNullOrEmpty(_textBoxSearchTerms.Text))
+            var regions = new List<Region>();
+
+            if (_checkBoxRegionUSA.Checked)
             {
-                filteredGames = filteredGames.Where(x => x.Title.Contains(_textBoxSearchTerms.Text.Trim(), StringComparison.InvariantCultureIgnoreCase)).ToList();
+                regions.Add(GamePicker.Region.USA);
             }
+
+            if (_checkBoxRegionEurope.Checked)
+            {
+                regions.Add(GamePicker.Region.EUROPE);
+            }
+
+            if (_checkBoxRegionJapan.Checked)
+            {
+                regions.Add(GamePicker.Region.JAPAN);
+            }
+
+            var selectedConsoles = new List<string>();
+
+            foreach (var item in _listBoxConsoleFilter.SelectedItems)
+            {
+                selectedConsoles.Add(item.ToString());
+            }
+
+            var searchTerms = _textBoxSearchTerms.Text.Trim();
+
+            filteredGames = filteredGames.Where(x =>
+                regions.Contains(x.Region) &&
+                (selectedConsoles.Count == 0 || selectedConsoles.Contains(x.Console)) &&
+                x.Title.Contains(searchTerms, StringComparison.InvariantCultureIgnoreCase)
+            ).ToList();
 
             if (filteredGames.Count != 0)
             {
@@ -121,21 +158,30 @@ namespace GamePicker
 
                 ClearTextBoxes();
                 PopulateTextBoxes(randomGame);
-            } else
+            }
+            else
             {
-                MessageBox.Show("No game found with specified parameters");
+                MessageBox.Show("No game found with specified parameters. Re-encabulate and try again!");
             }
         }
+
+
 
         private void onButtonClick(object sender, EventArgs e)
         {
             if (sender.Equals(_buttonPick))
             {
                 PickRandomGame();
-            } else if (sender.Equals(_buttonClearSelection))
+                
+            } else if (sender.Equals(_buttonResetFilters))
             {
                 _listBoxConsoleFilter.ClearSelected();
             }
+        }
+
+        private void _checkBoxRegionEurope_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

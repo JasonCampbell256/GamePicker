@@ -11,5 +11,6 @@ namespace GamePicker
         public string Game { get; set; }
         public string Console { get; set; }
         public string Region { get; set; }
+        public List<string> Playlists { get; set; }
     }
 }
