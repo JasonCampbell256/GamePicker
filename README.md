@@ -1,5 +1,7 @@
 # GamePicker
- Pick a random game based on console selection. Games and consoles are easily managed in a text file.
+An application created for the Twitch streamer [FuturemanGaming](https://www.twitch.tv/futuremangaming). Highly customized and stylized for a specific entertainment purpose. 
+
+Picks a random video game based on console, region, and keyword selections. Games and consoles are maintained in a csv file.
 
 ## Requirements
  1. A CSV file called GAMES.csv in the root application directory.
@@ -14,8 +16,8 @@
 
 ## Usage
  1. Run `GamePicker.exe`
- 2. (Optional) Pick your consoles.
- 3. Cick the "Pick Randon Game" button to populate fields on the right with a randomly chosen game.
+ 2. (Optional) Pick your consoles, regions, and/or type a keyword.
+ 3. Cick the "Encabulate" button to populate fields on the right with a randomly chosen game.
 
 ## Dependencies
  - .NET 5
