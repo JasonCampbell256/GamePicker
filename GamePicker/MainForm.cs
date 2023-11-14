@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace GamePicker
         public MainForm()
         {
             InitializeComponent();
-            this.Text = $"Random Game Picker v{System.Windows.Forms.Application.ProductVersion}";
+            _buttonPick.BackColor = Color.Black;
+            _buttonResetFilters.BackColor = Color.Black;
+            this.Text = $"Random Game Picker v{Application.ProductVersion}";
             ToggleControls(false);
             games = new List<Game>();
             systems = new List<string>();
@@ -52,7 +55,8 @@ namespace GamePicker
                     var records = csv.GetRecords<CsvGame>();
                     foreach (var record in records)
                     {
-                        var game = new Game {
+                        var game = new Game
+                        {
                             Title = record.Game,
                             Console = record.Console,
                             ConsoleRegionIdentifier = $"{record.Console} - {record.Region}"
@@ -61,11 +65,13 @@ namespace GamePicker
                             || String.Equals(record.Region.Trim(), "us", StringComparison.InvariantCultureIgnoreCase))
                         {
                             game.Region = GamePicker.Region.USA;
-                        } else if (String.Equals(record.Region.Trim(), "europe", StringComparison.InvariantCultureIgnoreCase)
+                        }
+                        else if (String.Equals(record.Region.Trim(), "europe", StringComparison.InvariantCultureIgnoreCase)
                             || String.Equals(record.Region.Trim(), "eu", StringComparison.InvariantCultureIgnoreCase))
                         {
                             game.Region = GamePicker.Region.EUROPE;
-                        } else if (String.Equals(record.Region.Trim(), "japan", StringComparison.InvariantCultureIgnoreCase)
+                        }
+                        else if (String.Equals(record.Region.Trim(), "japan", StringComparison.InvariantCultureIgnoreCase)
                             || String.Equals(record.Region.Trim(), "jp", StringComparison.InvariantCultureIgnoreCase))
                         {
                             game.Region = GamePicker.Region.JAPAN;
@@ -172,14 +178,30 @@ namespace GamePicker
             if (sender.Equals(_buttonPick))
             {
                 PickRandomGame();
-                
-            } else if (sender.Equals(_buttonResetFilters))
+
+            }
+            else if (sender.Equals(_buttonResetFilters))
             {
                 _listBoxConsoleFilter.ClearSelected();
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == (Keys.Control | Keys.E))
+            {
+                PickRandomGame();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void _checkBoxRegionEurope_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
