@@ -135,7 +135,6 @@ namespace GamePicker
             splitContainer1.Panel2.Controls.Add(label1);
             splitContainer1.Panel2.Controls.Add(label2);
             splitContainer1.Panel2.Controls.Add(_textBoxConsole);
-            splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
             splitContainer1.Size = new System.Drawing.Size(725, 860);
             splitContainer1.SplitterDistance = 367;
             splitContainer1.TabIndex = 0;
@@ -200,7 +199,6 @@ namespace GamePicker
             _checkBoxRegionEurope.TabIndex = 6;
             _checkBoxRegionEurope.Text = "Europe";
             _checkBoxRegionEurope.UseVisualStyleBackColor = true;
-            _checkBoxRegionEurope.CheckedChanged += _checkBoxRegionEurope_CheckedChanged;
             // 
             // _checkBoxRegionJapan
             // 

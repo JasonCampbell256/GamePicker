@@ -188,22 +188,12 @@ namespace GamePicker
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if(keyData == (Keys.Control | Keys.E))
+            if (keyData == (Keys.Control | Keys.E))
             {
                 PickRandomGame();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        private void _checkBoxRegionEurope_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
