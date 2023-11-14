@@ -102,7 +102,7 @@ namespace GamePicker
             _buttonPick.TabIndex = 11;
             _buttonPick.Text = "Encabulate";
             _buttonPick.UseVisualStyleBackColor = true;
-            _buttonPick.Click += onButtonClick;
+            _buttonPick.Click += OnButtonClick;
             // 
             // splitContainer1
             // 
@@ -247,7 +247,7 @@ namespace GamePicker
             _buttonResetFilters.TabIndex = 10;
             _buttonResetFilters.Text = "Reset Filters";
             _buttonResetFilters.UseVisualStyleBackColor = true;
-            _buttonResetFilters.Click += onButtonClick;
+            _buttonResetFilters.Click += OnButtonClick;
             // 
             // _listBoxConsoleFilter
             // 

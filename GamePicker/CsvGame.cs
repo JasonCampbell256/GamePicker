@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GamePicker
 {
+    /// <summary>
+    /// Represents a game from the GAMES.csv file
+    /// </summary>
     public class CsvGame
     {
         public string Game { get; set; }
